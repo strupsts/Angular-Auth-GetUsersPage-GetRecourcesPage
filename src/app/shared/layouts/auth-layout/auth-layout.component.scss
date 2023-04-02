@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+.auth-bg {
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(231, 245, 255, 1.0);
+  background: rgba(56, 124, 180, 1.0);
+  background: -webkit-radial-gradient(center, rgba(56, 124, 180, 1.0), rgba(13, 12, 47, 1.0));
+  background: -moz-radial-gradient(center, rgba(56, 124, 180, 1.0), rgba(13, 12, 47, 1.0));
+  background: radial-gradient(ellipse at center, rgba(56, 124, 180, 1.0), rgba(13, 12, 47, 1.0));
+  height: 100%;
+}
+.auth_type {
+  font-size: 20px;
+
+}
+
+.auth_wrapper {
+  display: flex;
+  border-radius: 5px 5px 0 0;
+
+  background: #2B6AA5;
+
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  width: 460px;
+  height: 80px;
+
+}
+
+
+
+.main-container {
+  background: #e8eff5;
+  width: 460px;
+  min-height: 350px;
+  border-radius: 0 0 5px 5px;
+}
+
+
+/* Buttons */
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  font-size: 12px;
+  width: 25px;
+  height: 15px;
+  color: rgba(231, 245, 255, 1.0);
+}
+.close-btn:hover {
+  background-color: #e80000;
+  cursor: pointer;
+  color: black;
+
+}
+

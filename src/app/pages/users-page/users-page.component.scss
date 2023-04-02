@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+
+.users_main-container {
+
+  margin: 0;
+  padding: 0 50px 0 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+.us_pageList {
+  display: flex;
+  justify-content: flex-end;
+}
+.us_page {
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid black;
+
+}
+.us_optionBar {
+  margin-top: 20px;
+
+
+  height: 40px;
+
+}
+.us_list-container {
+  background: white;
+  margin-top: 10px;
+  box-shadow: 2px 2px 2px #c0d0e2;
+}
+.us_filter-bar {
+  height: 30px;
+  background: black
+;
+}
+.us_card-container {
+  overflow-y: auto;
+  height: 100%;
+  background: white;
+}
+
+
+.infinity {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+.infinity:after {
+  animation: 0.6s linear 0s normal none infinite running loader-rotate;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border: 10px solid #12bbee;
+  -moz-border-radius: 50px 50px 0 50px;
+  border-radius: 20px 20px 0 20px;
+}
+.infinity:after {
+  left: auto;
+  right: 0;
+  -moz-border-radius: 50px 50px 50px 0;
+  border-radius: 50px 50px 50px 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.loader-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes loader-rotate {
+  0% {
+    transform: rotate(0deg);
+    border: 20px solid #12bbee;
+  }
+  100% {
+    transform: rotate(360deg);
+    border: 20px solid #1a5dc4;
+  }
+}
+

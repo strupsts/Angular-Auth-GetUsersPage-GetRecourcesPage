@@ -1,0 +1,24 @@
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+}
+.waves-effect.waves-orange .waves-ripple {
+  background-color: red;
+}
+
+
+/* label underline focus color */
+.loginInputs input.valid:focus, .loginInputs input.ng-untouched:focus{
+  border-bottom: 1px solid #65de43 !important;
+  box-shadow: 0 1px 0 0 rgba(93, 201, 61, 0.56) !important;
+}
+/* valid color */
+.loginInputs input.ng-valid {
+  border-bottom: 1px solid #65de43 !important;
+  box-shadow: 0 1px 0 0 rgba(99, 220, 64, 0.56) !important;
+}
+
+

@@ -1,0 +1,50 @@
+/* USER CARD */
+
+.uc_card {
+  cursor: pointer;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  background: white;
+}
+.uc_user-info {
+  display: flex;
+  align-items: center;
+}
+.uc_photo {
+  height: 50px;
+  width:50px;
+  margin: 0 15px;
+}
+.uc_name {
+  min-width: 200px;
+  max-width: 350px;
+  margin: 0 15px;
+}
+
+.uc_email{
+  width: 230px;
+  font-size: 14px;
+}
+.uc_delete-btn {
+
+  cursor: pointer;
+
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 14px;
+  margin: 15px;
+  background: #ec3535;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  color: white;
+  width: 130px;
+  height: 40px;
+}
+.uc_delete-btn:hover {
+  background: red;
+}

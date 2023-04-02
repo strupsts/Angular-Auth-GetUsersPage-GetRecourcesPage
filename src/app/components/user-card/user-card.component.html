@@ -1,0 +1,8 @@
+<div class="uc_card" (click)="openUserCard(user)">
+  <div class="uc_user-info">
+    <img class="uc_photo circle" [src]="user.avatar">
+    <div class="uc_name">{{user.first_name}} {{user.last_name}}</div>
+    <div class="uc_email">{{user.email}}</div>
+  </div>
+  <button class="uc_delete-btn" (click)="deleteUser(user.id, $event)">{{(isLoading) ? '⌛' : 'Удалить'}}</button>
+</div>

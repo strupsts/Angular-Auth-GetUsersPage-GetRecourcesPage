@@ -1,0 +1,48 @@
+<div class="ouc_container" *ngIf="user$ | async as user ; else loader">
+ <div class="ouc_left-column">
+  <div class="ouc_photo">
+    <img [src]="user.data.avatar" alt="Аватар пользователя">
+  </div>
+  <div class="ouc_info">
+    <div class="ouc_info-label">Информация о пользователе</div>
+
+    <div class="ouc_name">
+      <div class="ouc_info-label">Имя</div>
+        <div  [ngClass]="{'editBorders': editMode}"
+              [contentEditable]="editMode"
+              (input)="changeFN(user, $event)"
+              (keypress)="pressEnter($event, user)"
+        >{{user.data.first_name}}</div>
+
+      <div class="ouc_info-label">Фамилия</div>
+        <div  [ngClass]="{'editBorders': editMode}"
+              [contentEditable]="editMode"
+              (input)="changeLN(user, $event)"
+              (keypress)="pressEnter($event, user)">{{user.data.last_name}}</div>
+
+    </div>
+    <div class="ouc_info-label">Электронная почта</div>
+    <div class="out_email"
+         [ngClass]="{'editBorders': editMode}"
+         [contentEditable]="editMode"
+         (input)="changeEmail(user, $event)"
+         (keypress)="pressEnter($event, user)"
+    >{{user.data.email}}</div>
+  </div>
+ </div>
+  <div class="ouc_right-column">
+    <div class="ouc_edit-btn-form"><button class="btn ouc_edit-btn" (click)="editPage(user)">{{(editMode)?'Сохранить':'Редактировать'}}</button></div>
+    <div class="ouc_updateInfo" *ngIf="user.updatedAt">
+      <div class="ouc_info-label">Информация обновлена: </div>
+      <span *ngIf="user.updatedAt">{{user.updatedAt | date:'dd MMMM YYYY, H:mm МСК':'+3':'ru'}}</span>
+    </div>
+
+    </div>
+  </div>
+
+<ng-template #loader>
+  <div class="loader-container">
+      <div class="infinity"></div>
+  </div>
+</ng-template>
+

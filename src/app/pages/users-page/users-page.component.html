@@ -1,0 +1,21 @@
+<div class="users_main-container" *ngIf="userService.users; else loader">
+  <div class="us_optionBar">
+    <ul class="us_pageList" >
+      <li class="us_page"
+          *ngFor="let currPage of userService.totalPages; index as i"
+          (click)="selectPage(i+1)"
+        >{{i +1}}</li>
+    </ul>
+  </div>
+  <div class="us_list-container" >
+    <div class="us_card-container"  >
+
+    <app-user-card (outputData)="deleteUser($event)" *ngFor="let user of userService.users.data" [user]="user"></app-user-card>
+    </div>
+  </div>
+</div>
+<ng-template #loader>
+  <div class="loader-container">
+    <div class="infinity"></div>
+  </div>
+</ng-template>

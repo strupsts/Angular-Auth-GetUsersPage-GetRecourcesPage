@@ -1,0 +1,40 @@
+<form
+  class="login-block"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="loginInputs">
+<!--    Инпут почты -->
+    <input [ngClass]="{'invalid':form.get('email').invalid && form.get('email').touched}"
+      type="text"
+      placeholder="Email"
+      formControlName="email"
+    >
+    <div class="errBlock">
+      <span class="err-message"
+            *ngIf="form.get('email').invalid && form.get('email').touched"
+      >
+      <span *ngIf="form.get('email').errors['required']">Адрес почтового ящика не должен быть пустым</span>
+      <span *ngIf="form.get('email').errors['email']">Введите email в формате example@example.com</span>
+      </span>
+    </div>
+<!--    Инпут пароля -->
+    <input [ngClass]="{'invalid':form.get('password').invalid && form.get('password').touched}"
+      type="password"
+      placeholder="Пароль"
+      formControlName="password"
+    >
+    <div class="errBlock">
+      <span class="err-message"
+            *ngIf="form.get('password').invalid && form.get('password').touched"
+      >
+      <span *ngIf="form.get('password').errors['required']">Пароль не должен быть пустым</span>
+      </span>
+    </div>
+  </div>
+  <div class="loginButtons">
+    <button [disabled]="form.invalid || form.disabled" type="submit" class="enter-btn">Войти</button>
+    <a routerLink="/registration">Ещё нет аккаунта? Регистрация</a>
+  </div>
+
+</form>

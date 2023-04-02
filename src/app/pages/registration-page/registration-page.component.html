@@ -1,0 +1,57 @@
+<form
+  class="login-block"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+<!--  Инпут почты -->
+  <div class="loginInputs">
+    <input [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched}"
+             type="text"
+             placeholder="Имя пользователя"
+             formControlName="email"
+      >
+
+    <div class="errBlock">
+      <span class="err-message"
+            *ngIf="form.get('email').invalid && form.get('email').touched"
+      >
+      <span *ngIf="form.get('email').errors['required']">Это обязательное поле</span>
+      <span *ngIf="form.get('email').errors['email']">Введите email в формате example@example.com</span>
+      </span>
+    </div>
+
+  <div class="loginInputs_passwords form-group" formGroupName="pwds">
+<!--    Инпут пароля -->
+    <input [ngClass]="{'invalid':form.get('pwds.password').invalid && form.get('pwds.password').touched}"
+           type="text"
+           placeholder="Пароль"
+           formControlName="password"
+    >
+    <div class="errBlock">
+      <span class="err-message"
+            *ngIf="form.get('pwds.password').invalid && form.get('pwds.password').touched"
+      >
+      <span *ngIf="form.get('pwds.password').errors['required']">Это обязательное поле</span>
+      <span *ngIf="form.get('pwds.password').errors['minlength'] || form.get('pwds.password').errors['maxlength']">Пароль не может быть меньше 6 символов и больше 16</span>
+      </span>
+    </div>
+<!--  Повторение пароля -->
+    <input [ngClass]="{'invalid': (form.get('pwds').errors?.['fieldsNotEqual'] || form.get('pwds.confirmPassword').invalid) && (form.get('pwds.confirmPassword').touched || form.get('pwds.confirmPassword').dirty)}"
+           type="password"
+           placeholder="Повторите пароль"
+           formControlName="confirmPassword"
+    >
+    <div class="errBlock">
+      <span class="err-message"
+            *ngIf="form.get('pwds').errors?.['fieldsNotEqual'] && (form.get('pwds.confirmPassword').touched || form.get('pwds.confirmPassword').dirty)"
+      >Пароли не совпадают</span>
+    </div>
+  </div>
+  </div>
+<!--  Кнопки -->
+  <div class="loginButtons">
+    <button [disabled]="form.invalid || form.disabled" type="submit" class="enter-btn">Зарегистрироваться</button>
+    <a (mouseover)="debugFunc()" routerLink="/login">Войти в уже существующий аккаунт</a>
+  </div>
+
+</form>
