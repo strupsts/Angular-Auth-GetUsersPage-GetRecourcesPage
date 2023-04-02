@@ -17,7 +17,7 @@ import { RegistrationPageComponent } from './pages/registration-page/registratio
 import {TokenInterceptor} from "./shared/classes/token.interceptor";
 import { OverviewPageComponent } from './pages/overview-page/overview-page.component';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
-import { RecourcesPageComponent } from './pages/recources-page/recources-page.component';
+import { ResourcesPageComponent } from './pages/resources-page/resources-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import {CommonModule} from "@angular/common";
@@ -36,7 +36,7 @@ import {OpenedUserCardComponent} from "./components/opened-user-card/opened-user
     RegistrationPageComponent,
     OverviewPageComponent,
     UsersPageComponent,
-    RecourcesPageComponent,
+    ResourcesPageComponent,
     AboutPageComponent,
     UserCardComponent,
     OpenedUserCardComponent,

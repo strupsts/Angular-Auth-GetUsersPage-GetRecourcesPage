@@ -1,8 +1,8 @@
-<div class="users_main-container" *ngIf="recs; else loader">
+<div class="users_main-container" *ngIf="reso; else loader">
   <div class="us_optionBar">
     <ul class="us_pageList" >
       <li class="us_page"
-                *ngFor="let currPage of recourcesService.totalPages; index as i"
+                *ngFor="let currPage of resourcesService.totalPages; index as i"
                 (click)="changePageRefresh(i+1)" >
         {{i+1}}
       </li>
@@ -10,7 +10,7 @@
   </div>
   <div class="rs_list-container" >
     <div class="rs_card-container"  >
-      <div *ngFor="let card of recs.data" class="rs_card">
+      <div *ngFor="let card of reso.data" class="rs_card">
         <div class="rs_color" [ngStyle]="{'background': card.color ,pantoneKey: '101'}"></div>
         <div class="rs_name">{{card.name}}</div>
         <div class="rs_year">YEAR: {{card.year}}</div>

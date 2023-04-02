@@ -7,7 +7,7 @@ import {RegistrationPageComponent} from "./pages/registration-page/registration-
 import {AuthGuard} from "./shared/classes/auth.guard";
 import {OverviewPageComponent} from "./pages/overview-page/overview-page.component";
 import {UsersPageComponent} from "./pages/users-page/users-page.component";
-import {RecourcesPageComponent} from "./pages/recources-page/recources-page.component";
+import {ResourcesPageComponent} from "./pages/resources-page/resources-page.component";
 import {AboutPageComponent} from "./pages/about-page/about-page.component";
 import {OpenedUserCardComponent} from "./components/opened-user-card/opened-user-card.component";
 import {NotFoundPageComponent} from "./pages/not-found-page/not-found-page.component";
@@ -26,7 +26,7 @@ const routes: Routes = [
       {path: 'overview', component: OverviewPageComponent},
       {path: 'users', component: UsersPageComponent},
       {path: 'users/:id', component: OpenedUserCardComponent},
-      {path: 'recources', component: RecourcesPageComponent},
+      {path: 'recources', component: ResourcesPageComponent},
       {path: 'about', component: AboutPageComponent},
       {path: '**', component: NotFoundPageComponent},
 

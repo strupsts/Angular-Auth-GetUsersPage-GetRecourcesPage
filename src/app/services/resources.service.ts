@@ -4,13 +4,13 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: "root"
 })
-export class RecourcesService {
+export class ResourcesService {
     selectedPage:any = false
     totalPages:number[]
     constructor(private http: HttpClient) {
     }
 
-    getRecources$() {
+    getResources$() {
       return this.http.get(`api/unknown?page=${this.selectedPage}`)
     }
     setTotalPages(total_pages:any) {
@@ -18,7 +18,6 @@ export class RecourcesService {
     }
     changeSelectedPage(page:number) {
       this.selectedPage = page
-
     }
 
 
