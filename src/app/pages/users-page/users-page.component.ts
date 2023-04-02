@@ -19,7 +19,6 @@ export class UsersPageComponent implements OnInit{
   }
   selectPage(page:any){
     if(page===this.userService.page){
-      console.log(this.userService.users)
       return
     }
     this.userService.changePage(page)

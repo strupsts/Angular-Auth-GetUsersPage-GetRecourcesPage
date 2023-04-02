@@ -1,1 +1,30 @@
-<p>recources-page works!</p>
+<div class="users_main-container" *ngIf="recs; else loader">
+  <div class="us_optionBar">
+    <ul class="us_pageList" >
+      <li class="us_page"
+                *ngFor="let currPage of recourcesService.totalPages; index as i"
+                (click)="changePageRefresh(i+1)" >
+        {{i+1}}
+      </li>
+    </ul>
+  </div>
+  <div class="rs_list-container" >
+    <div class="rs_card-container"  >
+      <div *ngFor="let card of recs.data" class="rs_card">
+        <div class="rs_color" [ngStyle]="{'background': card.color ,pantoneKey: '101'}"></div>
+        <div class="rs_name">{{card.name}}</div>
+        <div class="rs_year">YEAR: {{card.year}}</div>
+        <div class="rs_codes" [ngStyle]="{'color':card.color}">
+          <div class="rs_codes-hash">HASH: {{card.color}}</div>
+          <div class="rs_codes-pantone">PANTONE: {{card.pantone_value}}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<ng-template #loader>
+  <div class="loader-container">
+    <div class="infinity"></div>
+  </div>
+</ng-template>

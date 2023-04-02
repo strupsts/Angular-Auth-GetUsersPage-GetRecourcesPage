@@ -39,7 +39,7 @@ import {OpenedUserCardComponent} from "./components/opened-user-card/opened-user
     RecourcesPageComponent,
     AboutPageComponent,
     UserCardComponent,
-    OpenedUserCardComponent
+    OpenedUserCardComponent,
   ],
   imports: [
     CommonModule,
