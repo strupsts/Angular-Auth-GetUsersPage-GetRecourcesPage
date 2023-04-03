@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserInfo} from "../../shared/interfaces";
 import {Observable} from "rxjs";
 import '@angular/common/locales/global/ru'
 
