@@ -29,7 +29,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       if (params['registered']) {
         MaterialService.toast('Теперь вы можете зайти в систему используя свои данные')
       } else if (params['accessDenied']){
-        // MaterialService.toast('Чтобы получить доступ к материалам сайта необходимо авторизоваться')
+        MaterialService.toast('Чтобы получить доступ к материалам сайта необходимо авторизоваться')
       }
     })
   }
