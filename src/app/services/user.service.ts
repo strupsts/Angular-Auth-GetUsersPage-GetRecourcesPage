@@ -1,13 +1,11 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {switchMap, tap} from "rxjs/operators";
-import {UserInfo} from "../shared/interfaces";
 import {ActivatedRoute} from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
-export class UserService {
+export class  UserService {
   user:any
   users: any = false
   page:any = 1
@@ -18,24 +16,24 @@ export class UserService {
   }
 // Вероятно подписываться в сервисе не лучшая практика, но в этот раз она показалась приемлимой
   getAllUsers() {
-    this.http.get(`/api/users?page=${this.page}`).subscribe((res:any)=> {this.users = res,this.getTotalPages()})
-
+    this.http.get(`/api/users?page=${this.page}`).subscribe((res:any)=> {
+      this.users = res
+      this.getTotalPages()})
   }
   getUser(id:number) {
     return this.http.get(`api/users/${id}`)
   }
-
   deleteUser(id:any) {
    this.http.delete(`/api/users?page=${id}`, {observe: "response"})
      .subscribe((res:any)=>{
-         this.users.data = this.users.data.filter((user:any)=>user.id !== id)
-         alert('Пользователь успешно удален!')
+       this.users.data = this.users.data.filter((user:any)=>user.id !== id)
+       alert('Пользователь успешно удален!')
      }, err=>{
        alert(`Пользователь не удален! Ошибка: \n${err.message}`)
        })
   }
   editUser(user:any) {
-    return this.http.put('https://reqres.in/api/users/2',{
+    return this.http.put(`https://reqres.in/api/users/${user.id}`,{
      data:{...user}
     })
   }
@@ -47,6 +45,5 @@ export class UserService {
     this.getAllUsers()
     console.log(this.page)
   }
-
 
 }

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-users-page',
@@ -11,7 +10,6 @@ export class UsersPageComponent implements OnInit{
   constructor(public userService: UserService) {
   }
   users:any
-
 
   ngOnInit() {
    this.userService.getAllUsers()
@@ -31,7 +29,5 @@ export class UsersPageComponent implements OnInit{
   debugFunc(){
    console.log()
   }
-
-
 
 }

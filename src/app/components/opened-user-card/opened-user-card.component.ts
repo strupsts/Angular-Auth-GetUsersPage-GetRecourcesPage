@@ -11,7 +11,6 @@ import '@angular/common/locales/global/ru'
   styleUrls: ['./opened-user-card.component.scss']
 })
 export class OpenedUserCardComponent implements OnInit{
-
     user$: Observable<any>
     userId:any
     user:any
@@ -23,31 +22,30 @@ export class OpenedUserCardComponent implements OnInit{
     constructor(public userService: UserService,
                 private router: Router,
                 private route: ActivatedRoute) {
-
     }
 
   ngOnInit() {
-    this.user$ = this.userService.getUser(this.userId = this.route.snapshot.params['id'])
-      // .subscribe(
-      //   (res:any)=>this.user = res.data,
-      //   (err)=>this.router.navigate(['user-not-found-404'])
-      // )
-
-
+    this.userId = this.route.snapshot.params['id']
+    this.user$ = this.userService.getUser(this.userId)
   }
+
+
   debugFunc(s:any) {
     console.log(s)
   }
 
-  editPage(user:any) {
+  editPageTool(user:any) {
       this.editMode = !this.editMode
       if(this.editMode===false){
         this.user$ = this.userService.editUser({...user.data, first_name:(this.first_name || user.data.first_name), email:(this.email || user.data.email) })
     }
   }
+  // В случае изменения юзером полей - меняем значения локальных переменных для дальнейшего PUT запроса на сервер
+  // change First Name
   changeFN(user:any, event:any) {
       user.data.first_name = event.target.innerText
   }
+  // change Last Name
   changeLN(user:any, event:any) {
     user.data.last_name = event.target.innerText
   }
@@ -57,7 +55,7 @@ export class OpenedUserCardComponent implements OnInit{
 
   pressEnter(event:any, user:any) {
       if(event.key == 'Enter'){
-        this.editPage(user)
+        this.editPageTool(user)
       }
 
   }
