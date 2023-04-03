@@ -23,7 +23,7 @@
   <div class="loginInputs_passwords form-group" formGroupName="pwds">
 <!--    Инпут пароля -->
     <input [ngClass]="{'invalid':form.get('pwds.password').invalid && form.get('pwds.password').touched}"
-           type="text"
+           type="password"
            placeholder="Пароль"
            formControlName="password"
     >
