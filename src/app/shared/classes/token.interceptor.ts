@@ -21,26 +21,24 @@ export class TokenInterceptor implements HttpInterceptor{
          }
        })
     }
-    else if(!this.auth.isAuth()) {
+    else if(!this.auth.isAuth() && window.location.pathname !== '/login' && window.location.pathname !== '/registration' ) {
       this.router.navigate(['/login'], {
       queryParams: {
-        accessDenied: true
+        accessDenied: true,
+        authnotauth:true
       }
     })
 
     }
     return next.handle(req).pipe(
       catchError(
-        (error:HttpErrorResponse)=> this.handleAuthError(error)
+        (error:HttpErrorResponse)=> this.handle404Error(error)
       )
     )
   }
-  private handleAuthError(error: HttpErrorResponse):Observable<any> {
-    if (error.status === 401){
-        this.router.navigate(['/login'],{
-          queryParams: {
-            tokenFired: true
-          }
+  private handle404Error(error: HttpErrorResponse):Observable<any> {
+    if (error.status === 404){
+        this.router.navigate(['/404_not-found'],{
         })
     }
     return throwError(error)
