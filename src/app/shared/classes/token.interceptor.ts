@@ -25,7 +25,6 @@ export class TokenInterceptor implements HttpInterceptor{
       this.router.navigate(['/login'], {
       queryParams: {
         accessDenied: true,
-        authnotauth:true
       }
     })
 

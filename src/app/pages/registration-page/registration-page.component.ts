@@ -37,7 +37,7 @@ export class RegistrationPageComponent implements OnInit, OnDestroy {
     this.form.disable()
     const newUser: User = {
       email: this.form.value.email,
-      password: this.form.value.password
+      password: this.form.value.pwds.password
     }
     this.aSub = this.auth.registration(newUser).subscribe(
       () => this.router.navigate(['/login'],{
