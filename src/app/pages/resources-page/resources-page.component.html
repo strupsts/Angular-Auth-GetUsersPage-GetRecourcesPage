@@ -1,7 +1,9 @@
-<div class="users_main-container" *ngIf="reso; else loader">
-  <div class="us_optionBar">
-    <ul class="us_pageList" >
-      <li class="us_page"
+<!--  При ожидании от сервера данных будет отображаться индикатор загрузки  -->
+<div class="resources_main-container" *ngIf="reso; else loader">
+  <div class="rs_optionBar">
+    <ul class="rs_pageList" >
+<!--  Количество страниц, зависит от перменной в сервисе  -->
+      <li class="rs_page"
                 *ngFor="let currPage of resourcesService.totalPages; index as i"
                 (click)="changePageRefresh(i+1)" >
         {{i+1}}
@@ -9,6 +11,7 @@
     </ul>
   </div>
   <div class="rs_list-container" >
+<!--  Карточка ресурса   -->
     <div class="rs_card-container"  >
       <div *ngFor="let card of reso.data" class="rs_card">
         <div class="rs_color" [ngStyle]="{'background': card.color ,pantoneKey: '101'}"></div>
@@ -23,6 +26,8 @@
     </div>
   </div>
 </div>
+
+
 <ng-template #loader>
   <div class="loader-container">
     <div class="infinity"></div>

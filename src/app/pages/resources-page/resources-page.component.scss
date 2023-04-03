@@ -1,23 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
-.users_main-container {
-
+.rs_main-container {
   margin: 0;
   padding: 0 50px 0 20px;
   overflow-y: auto;
   height: 100%;
 }
-.us_pageList {
+.rs_pageList {
   display: flex;
   justify-content: flex-end;
 }
-.us_page {
+.rs_page {
   cursor: pointer;
   padding: 5px;
   border: 1px solid black;
 
 }
-.us_optionBar {
+.rs_optionBar {
   margin-top: 20px;
 
 
@@ -29,11 +28,7 @@
   margin-top: 10px;
   box-shadow: 2px 2px 2px #c0d0e2;
 }
-.us_filter-bar {
-  height: 30px;
-  background: black
-;
-}
+
 .rs_card-container {
   display: flex;
   flex-wrap: wrap;

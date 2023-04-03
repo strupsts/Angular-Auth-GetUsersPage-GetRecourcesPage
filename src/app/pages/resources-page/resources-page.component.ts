@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../services/user.service";
-import {Observable} from "rxjs";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from "rxjs";
 import {ResourcesService} from "../../services/resources.service";
-import {tap} from "rxjs/operators";
-import {ActivatedRoute} from "@angular/router";
+
+// Тот компонент, который как мне кажется получился лучше всего.
 
 @Component({
   selector: 'app-resources-page',
@@ -11,69 +10,36 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./resources-page.component.scss']
 })
 
-export class ResourcesPageComponent implements OnInit{
-  reso$:Observable<any>
-  reso:any
+export class ResourcesPageComponent implements OnInit, OnDestroy {
+  subscription: Subscription
+  reso: any
 
+  // Подключение собственного сервиса для работы с ресурсами
   constructor(public resourcesService: ResourcesService) {
   }
 
-  
   ngOnInit() {
     this.getAllResources()
   }
 
   getAllResources() {
-
-    this.reso$ = this.resourcesService.getResources$()
-    this.reso$.subscribe((res:any)=>{
-      this.reso = res
-      if(!this.resourcesService.totalPages){
-        this.resourcesService.setTotalPages(this.reso.total_pages)
+    this.subscription = this.resourcesService.getResources$().subscribe((res) => {
+      this.reso = res   // Результат в виде обьекта записываем в локальную переменную для использования в html шаблоне
+      if (!this.resourcesService.totalPages) {       // Устанавливаем общее количество страниц, но только в том случае
+        this.resourcesService.setTotalPages(this.reso.total_pages)  // если они ещё не были установлены
       }
     })
   }
-  changePageRefresh(page:number) {
-    if(this.resourcesService.selectedPage == page) return;
-    this.resourcesService.changeSelectedPage(page)
-    console.log('changing', this.resourcesService.selectedPage)
-    this.reso = this.getAllResources()
-    console.log('changing', this.resourcesService.selectedPage)
 
+  // Метод вызывается когда пользователь жмет на кнопку страницы с передачей её номера
+  changePageRefresh(page: number) {
+    if (this.resourcesService.selectedPage == page) return; // В случае нажатия на уже активную страницу - бездействие
+    this.resourcesService.changeSelectedPage(page) // Передаем в сервис данные о выбранной странице
+    this.reso = this.getAllResources() // В сервисе изменилась 'selectedPage'. Нужно перерисовать страницу
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //
-  // selectPage(page:any){
-  //   if(page===this.userService.page){
-  //     console.log(this.userService.users)
-  //     return
-  //   }
-  //   this.userService.changePage(page)
-  // }
-  //
-  // deleteUser(id:any) {
-  //   console.log(this.userService.deleteUser(this.users))
-  // }
-  //
-  // debugFunc(){
-  //   console.log()
-  // }
-  //
-
+  ngOnDestroy() {
+    this.subscription.unsubscribe() // Отписываемся по концу жизненного цикла компонента.
+  }
 
 }
